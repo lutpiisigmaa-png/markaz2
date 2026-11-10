@@ -1,1 +1,1674 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677c8">
+  <meta name="description" content="Markaz At-Ta'allum — Membimbing Generasi dengan Ilmu dan Adab. Pusat bimbingan belajar Ma'had Al-Azhar dan Bahasa Arab di Hayy Sabik, Kairo, Mesir.">
+  <title>Markaz At-Ta'allum — Membimbing Generasi dengan Ilmu dan Adab</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Cinematic video intro: fade menyatu dengan latar hero, bukan berhenti pada garis putih. */
+    .landing-video {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      height: clamp(410px, 64vw, 700px);
+      overflow: hidden;
+      margin: 0 0 -1px;
+      background: linear-gradient(112deg, #f5f9fc 0%, #f4f8fb 52%, #e9f0f8 100%);
+    }
 
+    .landing-video__media {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 56%;
+      /* Video perlahan menghilang ke latar halaman. */
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 58%,
+        rgba(0, 0, 0, .94) 68%,
+        rgba(0, 0, 0, .78) 79%,
+        rgba(0, 0, 0, .48) 89%,
+        rgba(0, 0, 0, .20) 96%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 53%,
+        rgba(0, 0, 0, .96) 62%,
+        rgba(0, 0, 0, .82) 72%,
+        rgba(0, 0, 0, .55) 83%,
+        rgba(0, 0, 0, .25) 93%,
+        transparent 100%
+      );
+      animation: landingVideoReveal 1.15s ease-out both;
+    }
+
+    /* Fallback untuk browser lama yang belum mendukung mask-image. */
+    @supports not (mask-image: linear-gradient(to bottom, #000, transparent)) {
+      .landing-video::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: auto 0 0;
+        height: 48%;
+        pointer-events: none;
+        background: linear-gradient(
+          to bottom,
+          rgba(245, 249, 252, 0) 0%,
+          rgba(245, 249, 252, .38) 35%,
+          rgba(245, 249, 252, .78) 70%,
+          #f5f9fc 100%
+        );
+      }
+    }
+
+    .landing-video__sound {
+      position: absolute;
+      z-index: 3;
+      right: clamp(18px, 4vw, 42px);
+      bottom: clamp(34px, 6vw, 58px);
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, .58);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(17, 39, 58, .58);
+      box-shadow: 0 8px 24px rgba(10, 30, 50, .16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      cursor: pointer;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+      animation: soundButtonIn .65s .45s ease-out both;
+    }
+
+    .landing-video__sound:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: rgba(17, 39, 58, .82);
+      box-shadow: 0 11px 28px rgba(10, 30, 50, .22);
+    }
+
+    .landing-video__sound:active {
+      transform: scale(.96);
+    }
+
+    .landing-video__sound:focus-visible {
+      outline: 3px solid #1677c8;
+      outline-offset: 4px;
+    }
+
+    .landing-video__sound svg {
+      display: block;
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .landing-video__sound [hidden] {
+      display: none !important;
+    }
+
+    /* Masuk halus; tidak mengubah layout maupun fungsi hero yang sudah ada. */
+    .hero > div:first-child {
+      animation: landingContentIn .8s .12s ease-out both;
+    }
+
+    .hero-art {
+      animation: landingContentIn .95s .24s ease-out both;
+    }
+
+    @keyframes landingVideoReveal {
+      from { opacity: .72; }
+      to { opacity: 1; }
+    }
+
+    @keyframes landingContentIn {
+      from { opacity: 0; translate: 0 14px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+
+    @keyframes soundButtonIn {
+      from { opacity: 0; transform: translateY(8px) scale(.92); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 640px) {
+      .landing-video {
+        height: clamp(350px, 92vw, 470px);
+      }
+
+      .landing-video__media {
+        object-position: center 54%;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          #000 0%,
+          #000 55%,
+          rgba(0, 0, 0, .93) 65%,
+          rgba(0, 0, 0, .73) 77%,
+          rgba(0, 0, 0, .38) 90%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          #000 0%,
+          #000 55%,
+          rgba(0, 0, 0, .93) 65%,
+          rgba(0, 0, 0, .73) 77%,
+          rgba(0, 0, 0, .38) 90%,
+          transparent 100%
+        );
+      }
+
+      .landing-video__sound {
+        right: 17px;
+        bottom: 30px;
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .landing-video__media,
+      .landing-video__sound,
+      .hero > div:first-child,
+      .hero-art {
+        animation: none !important;
+      }
+
+      .landing-video__sound {
+        transition: none;
+      }
+    }
+  
+
+    /* Interactive introduction: fasilitas, pengalaman, materi, dan benefit Markaz. */
+    .discover-section {
+      position: relative;
+      padding: clamp(42px, 7vw, 86px) 0;
+      overflow: hidden;
+    }
+
+    .discover-card {
+      position: relative;
+      padding: clamp(22px, 4.2vw, 42px);
+      border: 1px solid rgba(22, 119, 200, .12);
+      border-radius: 28px;
+      background: linear-gradient(145deg, #ffffff 0%, #f7fbff 58%, #eef6fd 100%);
+      box-shadow: 0 18px 54px rgba(24, 64, 98, .065);
+    }
+
+    .discover-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 25px;
+    }
+
+    .discover-head > div { max-width: 760px; }
+    .discover-head h2 { margin-bottom: 10px; }
+    .discover-head p { max-width: 660px; margin-bottom: 0; }
+
+    .discover-tabs {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin: 0 0 26px;
+      padding: 7px;
+      overflow-x: auto;
+      border: 1px solid rgba(35, 91, 135, .10);
+      border-radius: 17px;
+      background: rgba(255, 255, 255, .82);
+      scrollbar-width: none;
+    }
+
+    .discover-tabs::-webkit-scrollbar { display: none; }
+
+    .discover-tab {
+      display: inline-flex;
+      flex: 1 0 auto;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 12px;
+      color: #536a7d;
+      background: transparent;
+      font: inherit;
+      font-size: .92rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color .22s ease, background .22s ease, box-shadow .22s ease, transform .22s ease;
+    }
+
+    .discover-tab:hover { color: #1677c8; background: #f1f7fc; }
+    .discover-tab:active { transform: scale(.98); }
+    .discover-tab[aria-selected="true"] {
+      color: #fff;
+      background: linear-gradient(110deg, #1677c8, #278ed4);
+      box-shadow: 0 8px 20px rgba(22, 119, 200, .20);
+    }
+
+    .discover-tab:focus-visible {
+      outline: 3px solid rgba(22, 119, 200, .34);
+      outline-offset: 3px;
+    }
+
+    .discover-tab-number {
+      font-size: .72rem;
+      font-weight: 800;
+      opacity: .72;
+      letter-spacing: .04em;
+    }
+
+    .discover-panel[hidden] { display: none !important; }
+    .discover-panel.is-active { animation: discoverPanelIn .42s ease both; }
+
+    .discover-panel-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      align-items: center;
+      gap: clamp(22px, 4vw, 42px);
+    }
+
+    .discover-copy { max-width: 470px; }
+    .discover-copy .eyebrow { display: inline-block; margin-bottom: 11px; }
+    .discover-copy h3 {
+      margin: 0 0 12px;
+      color: #193b59;
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      line-height: 1.2;
+    }
+    .discover-copy p { margin: 0; color: #65798a; line-height: 1.8; }
+
+    .discover-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 13px 15px;
+      border: 1px solid rgba(22, 119, 200, .12);
+      border-radius: 14px;
+      color: #526b80;
+      background: rgba(255, 255, 255, .78);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .discover-note-mark {
+      display: grid;
+      flex: 0 0 25px;
+      width: 25px;
+      height: 25px;
+      place-items: center;
+      border-radius: 8px;
+      color: #1677c8;
+      background: #e8f3fc;
+      font-weight: 900;
+    }
+
+    .discover-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .discover-photo-card {
+      min-width: 0;
+      padding: 8px;
+      border: 1px solid rgba(30, 79, 117, .10);
+      border-radius: 19px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(29, 67, 99, .055);
+      transition: transform .24s ease, box-shadow .24s ease;
+    }
+
+    .discover-photo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(29, 67, 99, .10);
+    }
+
+    .discover-photo-placeholder {
+      position: relative;
+      display: flex;
+      min-height: 155px;
+      aspect-ratio: 4 / 4.5;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      overflow: hidden;
+      padding: 14px;
+      border-radius: 13px;
+      color: #47718f;
+      text-align: center;
+      background: linear-gradient(145deg, #e8f3fc 0%, #d8e9f7 52%, #eff6fc 100%);
+    }
+
+    .discover-photo-placeholder::before,
+    .discover-photo-placeholder::after {
+      position: absolute;
+      content: "";
+      border: 1px solid rgba(22, 119, 200, .13);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .discover-photo-placeholder::before {
+      width: 145px;
+      height: 145px;
+      top: -70px;
+      right: -52px;
+    }
+
+    .discover-photo-placeholder::after {
+      width: 110px;
+      height: 110px;
+      bottom: -62px;
+      left: -36px;
+    }
+
+    .discover-photo-placeholder svg {
+      position: relative;
+      z-index: 1;
+      width: 29px;
+      height: 29px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.55;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: .9;
+    }
+
+    .discover-photo-placeholder span {
+      position: relative;
+      z-index: 1;
+      max-width: 150px;
+      font-size: .78rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .discover-photo-card strong {
+      display: block;
+      padding: 11px 5px 4px;
+      color: #25465f;
+      font-size: .9rem;
+      line-height: 1.35;
+    }
+
+    .discover-photo-card small {
+      display: block;
+      padding: 0 5px 8px;
+      color: #7b8d9c;
+      font-size: .76rem;
+      line-height: 1.5;
+    }
+
+    /* Jika foto asli sudah tersedia, ganti placeholder dengan img.discover-photo. */
+    .discover-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 4.5;
+      border-radius: 13px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .discover-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .discover-feature {
+      min-height: 190px;
+      padding: 20px 18px;
+      border: 1px solid rgba(30, 79, 117, .10);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: 0 10px 28px rgba(29, 67, 99, .045);
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+
+    .discover-feature:hover {
+      transform: translateY(-4px);
+      border-color: rgba(22, 119, 200, .24);
+      box-shadow: 0 15px 30px rgba(29, 67, 99, .085);
+    }
+
+    .discover-feature-icon {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      margin-bottom: 15px;
+      place-items: center;
+      border-radius: 14px;
+      color: #1677c8;
+      background: #eaf4fc;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .discover-feature h4 {
+      margin: 0 0 8px;
+      color: #23445e;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .discover-feature p {
+      margin: 0;
+      color: #718393;
+      font-size: .86rem;
+      line-height: 1.65;
+    }
+
+    .discover-bottom-link {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    @keyframes discoverPanelIn {
+      from { opacity: 0; transform: translateY(9px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 820px) {
+      .discover-panel-layout { grid-template-columns: 1fr; }
+      .discover-copy { max-width: 720px; }
+      .discover-gallery { max-width: 760px; }
+      .discover-feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .discover-feature { min-height: 180px; }
+    }
+
+    @media (max-width: 560px) {
+      .discover-section { padding: 34px 0 48px; }
+      .discover-card { padding: 20px 15px; border-radius: 22px; }
+      .discover-head { display: block; margin-bottom: 20px; }
+      .discover-head .btn { margin-top: 16px; }
+      .discover-tabs { gap: 6px; margin-bottom: 21px; padding: 5px; border-radius: 14px; }
+      .discover-tab { min-height: 42px; padding: 9px 12px; font-size: .82rem; }
+      .discover-tab-number { display: none; }
+      .discover-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .discover-photo-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+      .discover-photo-placeholder { min-height: 145px; }
+      .discover-feature-grid { grid-template-columns: 1fr; gap: 10px; }
+      .discover-feature { display: grid; grid-template-columns: 43px 1fr; column-gap: 13px; min-height: 0; padding: 15px; }
+      .discover-feature-icon { grid-row: span 2; margin: 0; }
+      .discover-feature h4 { align-self: end; margin-bottom: 4px; }
+      .discover-feature p { grid-column: 2; }
+      .discover-note { font-size: .82rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .discover-panel.is-active { animation: none !important; }
+      .discover-tab, .discover-photo-card, .discover-feature { transition: none !important; }
+    }
+
+  
+
+    /* Blueprint extensions: friendly, warm, academic, and modern. */
+    .story-section, .lms-preview-section, .people-section, .achievement-section,
+    .admission-section, .faq-section, .updates-section { position: relative; }
+
+    .story-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .story-feature-card {
+      min-height: 205px;
+      padding: 24px;
+      border: 1px solid rgba(22,119,200,.11);
+      border-radius: 21px;
+      background: linear-gradient(145deg,#fff 0%,#f8fbfe 100%);
+      box-shadow: 0 12px 32px rgba(27,68,101,.045);
+      transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+    }
+    .story-feature-card:hover { transform: translateY(-5px); border-color: rgba(22,119,200,.25); box-shadow: 0 18px 36px rgba(27,68,101,.09); }
+    .story-feature-icon, .admission-step-icon {
+      display: grid; width: 46px; height: 46px; margin-bottom: 17px; place-items: center;
+      border-radius: 15px; color: #1677c8; background: #eaf4fc; font-size: 1.35rem; font-weight: 800;
+    }
+    .story-feature-card h3 { margin: 0 0 9px; color: #21435d; font-size: 1.05rem; }
+    .story-feature-card p { margin: 0; color: #718393; font-size: .9rem; line-height: 1.72; }
+
+    .lms-preview-card {
+      padding: clamp(16px,3vw,28px); border: 1px solid rgba(22,119,200,.13); border-radius: 25px;
+      background: linear-gradient(145deg,#fff 0%,#f6faff 100%); box-shadow: 0 18px 50px rgba(24,64,98,.07);
+    }
+    .lms-preview-tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; padding:6px; border:1px solid rgba(35,91,135,.1); border-radius:15px; background:#fff; }
+    .lms-preview-tab { flex:1 1 150px; min-height:44px; padding:10px 15px; border:0; border-radius:11px; color:#597083; background:transparent; font:inherit; font-weight:750; cursor:pointer; transition:background .2s ease,color .2s ease,transform .2s ease; }
+    .lms-preview-tab:hover { color:#1677c8; background:#f0f7fd; }
+    .lms-preview-tab.is-active { color:#fff; background:linear-gradient(110deg,#1677c8,#278ed4); box-shadow:0 7px 18px rgba(22,119,200,.18); }
+    .lms-preview-tab:focus-visible,.mini-demo-button:focus-visible,.faq-question:focus-visible { outline:3px solid rgba(22,119,200,.35); outline-offset:3px; }
+    .lms-preview-panel[hidden] { display:none !important; }
+    .lms-preview-panel.is-active { animation:discoverPanelIn .38s ease both; }
+    .portal-preview-shell { overflow:hidden; border:1px solid #dce8f1; border-radius:18px; background:#f5f8fc; box-shadow:0 14px 35px rgba(31,65,92,.08); }
+    .portal-preview-topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:62px; padding:12px 20px; border-bottom:1px solid #e3ebf2; background:#fff; }
+    .portal-preview-brand { display:flex; align-items:center; gap:10px; color:#1e4564; font-weight:850; }
+    .portal-brand-dot { width:11px; height:11px; border-radius:50%; background:#1677c8; box-shadow:0 0 0 5px #e7f2fb; }
+    .portal-preview-brand small { display:block; margin-top:2px; color:#8a9baa; font-size:.68rem; font-weight:600; }
+    .portal-preview-label { padding:6px 10px; border-radius:999px; color:#2878ad; background:#eaf4fc; font-size:.7rem; font-weight:800; }
+    .portal-preview-body { display:grid; grid-template-columns:180px minmax(0,1fr); min-height:315px; }
+    .portal-preview-sidebar { display:flex; flex-direction:column; gap:8px; padding:22px 13px; border-right:1px solid #e3ebf2; background:#fff; color:#8293a1; font-size:.83rem; }
+    .portal-preview-sidebar span { display:flex; align-items:center; gap:10px; padding:10px 11px; border-radius:9px; }
+    .portal-preview-sidebar .portal-side-active { color:#1677c8; background:#edf6fd; font-weight:800; }
+    .portal-preview-main { min-width:0; padding:22px; }
+    .portal-preview-welcome { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 20px; border-radius:15px; color:#fff; background:linear-gradient(115deg,#176fb2,#3997d7); }
+    .portal-preview-welcome small { color:rgba(255,255,255,.76); font-size:.65rem; font-weight:800; letter-spacing:.12em; }
+    .portal-preview-welcome h3 { margin:7px 0 5px; color:#fff; font-size:clamp(1.05rem,2.2vw,1.45rem); }
+    .portal-preview-welcome p { margin:0; color:rgba(255,255,255,.82); font-size:.8rem; }
+    .portal-avatar { display:grid; flex:0 0 48px; width:48px; height:48px; place-items:center; border:1px solid rgba(255,255,255,.35); border-radius:15px; background:rgba(255,255,255,.16); font-size:1.4rem; }
+    .portal-preview-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:11px; margin-top:14px; }
+    .portal-mini-card { display:flex; flex-direction:column; gap:5px; min-height:122px; padding:14px; border:1px solid #e2ebf3; border-radius:13px; background:#fff; }
+    .portal-mini-icon { display:grid; width:31px; height:31px; margin-bottom:4px; place-items:center; border-radius:10px; color:#1677c8; background:#eaf4fc; }
+    .portal-mini-card small { color:#8a9baa; font-size:.68rem; }
+    .portal-mini-card strong { color:#294b65; font-size:.8rem; }
+    .portal-mini-card span:last-child { color:#8192a0; font-size:.68rem; }
+    .portal-preview-lower { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-top:13px; padding:14px 16px; border:1px solid #e2ebf3; border-radius:13px; background:#fff; }
+    .portal-preview-lower strong,.portal-preview-lower span { display:block; }
+    .portal-preview-lower strong { color:#294b65; font-size:.8rem; }
+    .portal-preview-lower span { margin-top:3px; color:#8192a0; font-size:.7rem; }
+    .portal-progress-lines { display:flex; gap:5px; width:34%; }
+    .portal-progress-lines i { display:block; flex:1; height:7px; border-radius:99px; background:#dcecf8; }
+    .portal-progress-lines i:first-child { background:#278ed4; }
+    .lms-preview-caption,.section-footnote { margin:13px 0 0; color:#8393a1; font-size:.78rem; text-align:center; }
+
+    .mini-demo-layout { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:25px; align-items:center; min-height:290px; }
+    .mini-demo-intro h3 { margin:0 0 10px; color:#21435d; font-size:1.45rem; }
+    .mini-demo-intro p { color:#718393; line-height:1.7; }
+    .mini-demo-menu { display:flex; flex-wrap:wrap; gap:7px; margin-top:18px; }
+    .mini-demo-button { padding:9px 15px; border:1px solid #dce9f3; border-radius:999px; color:#547086; background:#fff; font:inherit; font-size:.84rem; font-weight:750; cursor:pointer; }
+    .mini-demo-button.is-active { color:#fff; border-color:#1677c8; background:#1677c8; }
+    .mini-demo-stage { min-height:250px; padding:19px; border:1px solid #e0eaf2; border-radius:17px; background:#fff; box-shadow:0 12px 30px rgba(31,65,92,.06); }
+    .mini-demo-stage-top { display:flex; justify-content:space-between; gap:12px; padding-bottom:13px; border-bottom:1px solid #edf1f5; color:#8a9baa; font-size:.65rem; font-weight:850; letter-spacing:.09em; }
+    .mini-demo-status { color:#27866c; }
+    .mini-demo-content { padding-top:17px; animation:discoverPanelIn .25s ease both; }
+    .mini-demo-kicker { color:#2785c5; font-size:.68rem; font-weight:850; letter-spacing:.1em; }
+    .mini-demo-content h4 { margin:7px 0; color:#21435d; font-size:1.15rem; }
+    .mini-demo-content p { color:#718393; font-size:.86rem; line-height:1.65; }
+    .mini-demo-module { display:flex; align-items:center; gap:11px; margin-top:9px; padding:11px; border:1px solid #e8eef4; border-radius:11px; }
+    .mini-demo-module>span { display:grid; width:32px; height:32px; place-items:center; border-radius:9px; color:#1677c8; background:#eaf4fc; font-size:.76rem; font-weight:850; }
+    .mini-demo-module div { flex:1; }
+    .mini-demo-module strong,.mini-demo-module small { display:block; }
+    .mini-demo-module strong { color:#35536b; font-size:.8rem; }
+    .mini-demo-module small { margin-top:3px; color:#8a9baa; font-size:.7rem; }
+    .mini-demo-module b { color:#27866c; }
+    .mini-demo-quiz-options { display:grid; gap:8px; margin-top:13px; }
+    .mini-demo-quiz-options button { padding:10px 12px; border:1px solid #e2ebf3; border-radius:10px; color:#4f687d; background:#fff; text-align:left; cursor:pointer; }
+    .mini-demo-quiz-options button.is-correct { border-color:#8bcdb3; color:#216d50; background:#eef9f3; }
+    .mini-demo-feedback { min-height:20px; margin-top:9px; color:#27866c; font-size:.8rem; font-weight:700; }
+    .lms-video-demo-wrap { max-width:850px; margin:0 auto; overflow:hidden; border:1px solid #dce8f1; border-radius:18px; background:#102d46; }
+    .lms-video-placeholder { display:flex; min-height:300px; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:30px; color:#fff; text-align:center; background:radial-gradient(circle at 50% 15%,rgba(58,139,194,.42),transparent 55%),linear-gradient(135deg,#143d5c,#102a40); }
+    .lms-video-play { display:grid; width:58px; height:58px; place-items:center; border:1px solid rgba(255,255,255,.38); border-radius:50%; color:#fff; background:rgba(255,255,255,.13); font-size:1.25rem; }
+    .lms-video-placeholder strong { font-size:1.15rem; }
+    .lms-video-placeholder p { max-width:530px; margin:0; color:rgba(255,255,255,.75); font-size:.87rem; line-height:1.6; }
+    .lms-video-placeholder code { color:#fff; }
+    .lms-video-placeholder small { color:rgba(255,255,255,.65); font-size:.74rem; }
+    .lms-demo-video { display:block; width:100%; max-height:480px; background:#102a40; }
+
+    .people-grid,.achievement-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+    .person-card,.achievement-card { overflow:hidden; border:1px solid rgba(22,119,200,.11); border-radius:20px; background:#fff; box-shadow:0 12px 32px rgba(27,68,101,.05); }
+    .person-photo-placeholder,.achievement-visual { display:grid; min-height:215px; place-items:center; padding:20px; color:#547895; background:linear-gradient(145deg,#eaf4fc,#dcecf8); text-align:center; font-size:.85rem; font-weight:800; }
+    .person-photo-warm,.achievement-visual-warm { color:#8b6849; background:linear-gradient(145deg,#fff2e5,#f6dfc9); }
+    .person-photo-soft,.achievement-visual-soft { color:#5d718f; background:linear-gradient(145deg,#eff2fb,#e0e8f6); }
+    .person-card-copy,.achievement-copy { padding:19px; }
+    .person-label { color:#2785c5; font-size:.66rem; font-weight:850; letter-spacing:.11em; }
+    .person-card h3,.achievement-card h3 { margin:7px 0; color:#23445e; font-size:1.08rem; }
+    .person-card p,.achievement-card p { margin:0; color:#718393; font-size:.87rem; line-height:1.65; }
+    .person-placeholder-note { display:inline-block; margin-top:12px; color:#9aa8b3; font-size:.72rem; }
+
+    .admission-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; }
+    .admission-step { position:relative; min-height:205px; padding:22px 18px; border:1px solid rgba(22,119,200,.12); border-radius:18px; background:#fff; box-shadow:0 10px 27px rgba(27,68,101,.045); }
+    .admission-number { position:absolute; top:17px; right:18px; color:#c5d8e7; font-size:1.1rem; font-weight:900; }
+    .admission-step-icon { width:41px; height:41px; margin-bottom:15px; }
+    .admission-step h3 { margin:0 0 8px; color:#23445e; font-size:1rem; }
+    .admission-step p { margin:0; color:#718393; font-size:.84rem; line-height:1.65; }
+    .admission-help { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px 15px; margin-top:20px; padding:14px; border-radius:13px; color:#60788b; background:#eef6fc; font-size:.88rem; }
+    .admission-help a { color:#1677c8; font-weight:800; text-decoration:none; }
+
+    .faq-layout { display:grid; grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr); gap:clamp(25px,5vw,65px); align-items:start; }
+    .faq-intro { position:sticky; top:100px; }
+    .faq-intro h2 { margin:0 0 12px; color:#21435d; font-size:clamp(1.7rem,3vw,2.3rem); }
+    .faq-intro p { margin:0 0 20px; color:#718393; line-height:1.75; }
+    .faq-list { display:grid; gap:10px; }
+    .faq-item { overflow:hidden; border:1px solid rgba(22,119,200,.12); border-radius:15px; background:#fff; box-shadow:0 8px 22px rgba(27,68,101,.035); }
+    .faq-item h3 { margin:0; }
+    .faq-question { display:flex; width:100%; min-height:62px; align-items:center; justify-content:space-between; gap:15px; padding:16px 19px; border:0; color:#294b65; background:#fff; font:inherit; font-size:.94rem; font-weight:800; text-align:left; cursor:pointer; }
+    .faq-toggle { display:grid; flex:0 0 27px; width:27px; height:27px; place-items:center; border-radius:9px; color:#1677c8; background:#eaf4fc; font-size:1.1rem; transition:transform .2s ease; }
+    .faq-question[aria-expanded="true"] .faq-toggle { transform:rotate(45deg); }
+    .faq-answer { padding:0 19px 17px; color:#718393; }
+    .faq-answer p { margin:0; font-size:.88rem; line-height:1.75; }
+    .faq-answer[hidden] { display:none !important; }
+
+    .whatsapp-float { position:fixed; z-index:80; right:22px; bottom:22px; display:grid; width:57px; height:57px; place-items:center; border:1px solid rgba(255,255,255,.7); border-radius:50%; color:#fff; background:#20a568; box-shadow:0 12px 30px rgba(19,118,75,.25); transition:transform .22s ease,box-shadow .22s ease; }
+    .whatsapp-float:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 35px rgba(19,118,75,.32); }
+    .whatsapp-float svg { width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:1.45; stroke-linecap:round; stroke-linejoin:round; }
+    .gallery-lightbox[hidden] { display:none !important; }
+    .gallery-lightbox { position:fixed; z-index:120; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:30px; background:rgba(8,22,35,.91); backdrop-filter:blur(9px); }
+    .gallery-lightbox img { display:block; max-width:min(92vw,1100px); max-height:78vh; object-fit:contain; border-radius:13px; box-shadow:0 20px 60px rgba(0,0,0,.3); }
+    .gallery-lightbox p { margin:0; color:#fff; font-size:.9rem; }
+    .gallery-lightbox-close { position:absolute; top:20px; right:22px; display:grid; width:43px; height:43px; place-items:center; border:1px solid rgba(255,255,255,.3); border-radius:50%; color:#fff; background:rgba(255,255,255,.12); font-size:1.7rem; cursor:pointer; }
+
+    @media (max-width: 900px) {
+      .story-feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .admission-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .people-grid,.achievement-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .faq-layout { grid-template-columns:1fr; }
+      .faq-intro { position:static; }
+    }
+    @media (max-width: 640px) {
+      .story-feature-grid,.people-grid,.achievement-grid { grid-template-columns:1fr; }
+      .story-feature-card { min-height:0; padding:19px; }
+      .portal-preview-body { grid-template-columns:1fr; }
+      .portal-preview-sidebar { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; padding:10px; border-right:0; border-bottom:1px solid #e3ebf2; }
+      .portal-preview-sidebar span { justify-content:center; padding:8px 5px; font-size:.75rem; }
+      .portal-preview-sidebar span span { display:none; }
+      .portal-preview-main { padding:12px; }
+      .portal-preview-welcome { padding:14px; }
+      .portal-preview-cards { grid-template-columns:1fr; }
+      .portal-mini-card { display:grid; grid-template-columns:34px 1fr; min-height:0; align-items:center; column-gap:9px; }
+      .portal-mini-icon { grid-row:span 2; margin:0; }
+      .portal-mini-card small,.portal-mini-card strong,.portal-mini-card span:last-child { grid-column:2; }
+      .portal-mini-card small { display:none; }
+      .portal-preview-lower { align-items:flex-start; flex-direction:column; }
+      .portal-progress-lines { width:100%; }
+      .mini-demo-layout { grid-template-columns:1fr; gap:15px; }
+      .mini-demo-stage { min-height:230px; }
+      .lms-video-placeholder { min-height:270px; padding:22px 16px; }
+      .admission-grid { grid-template-columns:1fr; }
+      .admission-step { min-height:0; padding:18px; }
+      .whatsapp-float { right:15px; bottom:15px; width:52px; height:52px; }
+      .gallery-lightbox { padding:18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .story-feature-card,.lms-preview-tab,.whatsapp-float,.faq-toggle { transition:none !important; }
+      .lms-preview-panel.is-active,.mini-demo-content { animation:none !important; }
+    }
+
+  
+    .reveal-ready { opacity:0; transform:translateY(16px); transition:opacity .55s ease,transform .55s ease; }
+    .reveal-ready.reveal-visible { opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal-ready { opacity:1; transform:none; transition:none; } }
+
+  </style>
+</head>
+<body data-page="landing">
+  <div id="app">
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="Beranda Markaz At-Ta'allum">
+          <span class="brand-mark"></span>
+          <span class="brand-name">Markaz At-Ta'allum<small>Hayy Sabik · Kairo</small></span>
+        </a>
+        <nav class="nav-links" aria-label="Navigasi utama">
+          <a href="#kenali-markaz">Tentang</a>
+          <a href="#lms-preview">Pengalaman</a>
+          <a href="#program">Program</a>
+          <a href="#pengajar">Pengajar</a>
+          <a href="#cerita">Cerita</a>
+          <a href="#pengumuman">Kabar Markaz</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="login.html">Masuk Portal</a>
+          <a class="btn btn-orange" href="register.html">Daftar Santri</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- CINEMATIC LANDING VIDEO: letakkan Markas.mp4 satu folder dengan index.html -->
+      <section class="landing-video" aria-label="Video pengenalan Markaz At-Ta'allum">
+        <video
+          class="landing-video__media"
+          id="landingHeroVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="Video suasana Markaz At-Ta'allum"
+        >
+          <source src="Markas.mp4" type="video/mp4">
+          Browser Anda tidak mendukung pemutaran video.
+        </video>
+        <button
+          class="landing-video__sound"
+          id="landingVideoSound"
+          type="button"
+          aria-label="Nyalakan suara"
+          title="Nyalakan suara"
+          aria-pressed="false"
+        >
+          <svg id="landingSoundMutedIcon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+            <path d="m16 9 5 6m0-6-5 6"></path>
+          </svg>
+          <svg id="landingSoundOnIcon" viewBox="0 0 24 24" aria-hidden="true" hidden>
+            <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+            <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+            <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+          </svg>
+        </button>
+      </section>
+
+      <!-- HERO SECTION -->
+      <section class="container hero" id="tentang">
+        <div>
+          <span class="eyebrow">Berdiri Sejak 2024 · Hayy Sabik, Kairo</span>
+          <h1>Membimbing generasi dengan <em>ilmu dan adab.</em></h1>
+          <p class="hero-copy">
+            Lembaga bimbingan belajar Ma'had Al-Azhar dan Bahasa Arab di Kairo yang mendampingi perjalanan belajar santri melalui materi terarah, pengajar, dan pengalaman belajar yang hangat. Kami hadir sebagai ruang bertumbuh bagi calon santri dan orang tua yang ingin mengenal proses pendidikan dengan lebih dekat.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-orange" href="register.html">Mulai Perjalanan Ilmu</a>
+            <a class="btn btn-secondary" href="#program">Lihat Program Kami</a>
+            <a class="btn btn-quiet" href="login.html">Masuk Portal 4 Role →</a>
+          </div>
+          <div class="hero-note">
+            <span class="dot-live" aria-hidden="true"></span>
+            <span><strong>Menerangi Ilmu dengan Hati</strong> · Dipimpin oleh Founder Ustadzah Hilwah Habibah</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Ringkasan metode pembelajaran Markaz At-Ta'allum">
+          <div class="art-glow" aria-hidden="true"></div>
+          <div class="learning-card">
+            <div class="card-top">
+              <span class="mini-label">Tahapan Perkembangan Murid</span>
+              <span class="book-icon" data-icon="book"></span>
+            </div>
+            <span class="eyebrow">Metode At-Ta'allum</span>
+            <h3>Mau · Sadar · Tekad</h3>
+            <p>Dari tumbuhnya keinginan belajar, memahami ilmu sebagai kebutuhan, hingga bertekad kuat meraih masa depan gemilang dengan istiqomah.</p>
+            <div class="progress-row">
+              <span>Keseimbangan Ilmu, Adab &amp; Percaya Diri</span>
+              <strong>100%</strong>
+            </div>
+            <div class="progress" aria-hidden="true"><span style="width: 100%"></span></div>
+          </div>
+
+          <div class="floating-chip one">
+            <span class="chip-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3c1 5-3 6-3 9-2-1-3-3-3-3-3 4-4 10 1 12 7 3 13-3 10-9-1-2-2-3-2-3 0 3-2 4-2 4 2-5-1-10-1-10Z"/></svg>
+            </span>
+            <span>Streak Istiqomah &amp; KTA Digital</span>
+          </div>
+          <div class="floating-chip two">
+            <span class="chip-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            </span>
+            <span>Kurasi Video, Modul &amp; Kuis per Madah</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- KENALI MARKAZ: TAB INTERAKTIF -->
+      <section class="discover-section" id="kenali-markaz" aria-labelledby="discoverTitle">
+        <div class="container">
+          <div class="discover-card">
+            <div class="discover-head">
+              <div>
+                <span class="eyebrow">Lebih Dekat dengan At-Ta'allum</span>
+                <h2 id="discoverTitle">Apa saja yang ada di Markaz At-Ta'allum?</h2>
+                <p>Kenali ruang belajar, pengalaman pembelajaran, materi, dan berbagai hal yang menemani perjalanan ilmu santri di Hayy Sabik, Kairo.</p>
+              </div>
+              <a class="btn btn-secondary btn-sm" href="register.html">Gabung Bersama Kami →</a>
+            </div>
+
+            <div class="discover-tabs" role="tablist" aria-label="Jelajahi Markaz At-Ta'allum">
+              <button class="discover-tab" id="discover-tab-fasilitas" type="button" role="tab" aria-selected="true" aria-controls="discover-panel-fasilitas" tabindex="0" data-discover-tab="fasilitas">
+                <span class="discover-tab-number">01</span> Fasilitas
+              </button>
+              <button class="discover-tab" id="discover-tab-pengalaman" type="button" role="tab" aria-selected="false" aria-controls="discover-panel-pengalaman" tabindex="-1" data-discover-tab="pengalaman">
+                <span class="discover-tab-number">02</span> Pengalaman Belajar
+              </button>
+              <button class="discover-tab" id="discover-tab-materi" type="button" role="tab" aria-selected="false" aria-controls="discover-panel-materi" tabindex="-1" data-discover-tab="materi">
+                <span class="discover-tab-number">03</span> Materi &amp; Modul
+              </button>
+              <button class="discover-tab" id="discover-tab-benefit" type="button" role="tab" aria-selected="false" aria-controls="discover-panel-benefit" tabindex="-1" data-discover-tab="benefit">
+                <span class="discover-tab-number">04</span> Benefit Santri
+              </button>
+            </div>
+
+            <!-- TAB 1: FOTO FASILITAS. Ganti blok discover-photo-placeholder dengan img.discover-photo saat foto tersedia. -->
+            <div class="discover-panel is-active" id="discover-panel-fasilitas" role="tabpanel" aria-labelledby="discover-tab-fasilitas" data-discover-panel="fasilitas">
+              <div class="discover-panel-layout">
+                <div class="discover-copy">
+                  <span class="eyebrow">Ruang yang Mendukung Proses Belajar</span>
+                  <h3>Belajar nyaman, fokus, dan lebih menyenangkan.</h3>
+                  <p>Markaz At-Ta'allum berlokasi di Hayy Sabik, Kairo. Kenalkan calon santri pada lingkungan belajar melalui foto ruang kelas, fasilitas, dan suasana kegiatan yang berlangsung di Markaz.</p>
+                  <div class="discover-note">
+                    <span class="discover-note-mark">✓</span>
+                    <span>Ruang belajar dilengkapi AC untuk musim panas dan pemanas untuk musim dingin. Tampilkan juga fasilitas lain yang tersedia melalui foto asli Markaz.</span>
+                  </div>
+                </div>
+                <div class="discover-gallery">
+                  <article class="discover-photo-card">
+                    <div class="discover-photo-placeholder" aria-label="Tempat untuk foto ruang kelas">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h10"/></svg>
+                      <span>Tempatkan foto ruang kelas</span>
+                    </div>
+                    <strong>Ruang Belajar</strong>
+                    <small>Perlihatkan suasana ruang belajar santri.</small>
+                  </article>
+                  <article class="discover-photo-card">
+                    <div class="discover-photo-placeholder" aria-label="Tempat untuk foto fasilitas kelas">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8h10"/></svg>
+                      <span>Tempatkan foto TV / layar dan fasilitas</span>
+                    </div>
+                    <strong>Fasilitas Kelas</strong>
+                    <small>Tampilkan perangkat belajar dan fasilitas yang tersedia.</small>
+                  </article>
+                  <article class="discover-photo-card">
+                    <div class="discover-photo-placeholder" aria-label="Tempat untuk foto suasana belajar">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.5-3.5 2.5-5 6-5s5.5 1.5 6 5M14 15c3.5-.8 6 .8 7 4"/></svg>
+                      <span>Tempatkan foto suasana belajar</span>
+                    </div>
+                    <strong>Suasana Markaz</strong>
+                    <small>Perlihatkan interaksi dan aktivitas di kelas.</small>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: PENGALAMAN BELAJAR -->
+            <div class="discover-panel" id="discover-panel-pengalaman" role="tabpanel" aria-labelledby="discover-tab-pengalaman" data-discover-panel="pengalaman" hidden>
+              <div class="discover-panel-layout">
+                <div class="discover-copy">
+                  <span class="eyebrow">Bukan Sekadar Duduk di Kelas</span>
+                  <h3>Pengalaman belajar yang hangat dan terarah.</h3>
+                  <p>Proses belajar dirancang agar santri tidak hanya menerima materi, tetapi juga mendapat pendampingan, kesempatan bertanya, dan evaluasi untuk menguatkan pemahaman.</p>
+                  <div class="discover-note">
+                    <span class="discover-note-mark">✦</span>
+                    <span>Setiap santri memiliki ritme belajar sendiri. Pendampingan dilakukan bertahap sesuai kebutuhan dan perkembangan belajar.</span>
+                  </div>
+                </div>
+                <div class="discover-feature-grid">
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">✦</div>
+                    <h4>Pendampingan Pengajar</h4>
+                    <p>Belajar dengan arahan pengajar untuk membantu memahami materi secara bertahap.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">◎</div>
+                    <h4>Interaktif &amp; Menyenangkan</h4>
+                    <p>Suasana belajar yang hangat, komunikatif, dan mendorong santri aktif memahami pelajaran.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">✓</div>
+                    <h4>Evaluasi &amp; Mutaba'ah</h4>
+                    <p>Penguatan proses belajar melalui evaluasi dan pemantauan mutaba'ah bersama pengajar.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: MATERI DAN MODUL -->
+            <div class="discover-panel" id="discover-panel-materi" role="tabpanel" aria-labelledby="discover-tab-materi" data-discover-panel="materi" hidden>
+              <div class="discover-panel-layout">
+                <div class="discover-copy">
+                  <span class="eyebrow">Belajar Tidak Berhenti di Kelas</span>
+                  <h3>Materi pendukung untuk mengulang dan menguatkan pemahaman.</h3>
+                  <p>Santri didukung dengan materi yang disesuaikan dengan madah pilihan, sehingga proses belajar dapat dilanjutkan melalui video, modul, dan latihan.</p>
+                  <div class="discover-note">
+                    <span class="discover-note-mark">▶</span>
+                    <span>Materi video, modul, dan kuis disusun berdasarkan madah/program yang dipilih santri.</span>
+                  </div>
+                </div>
+                <div class="discover-feature-grid">
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">▶</div>
+                    <h4>Video Pembelajaran</h4>
+                    <p>Kurasi video untuk membantu santri mengulang dan memahami kembali materi.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">▤</div>
+                    <h4>Modul Eksklusif</h4>
+                    <p>Modul pendukung sebagai pegangan belajar dan penguatan materi setiap madah.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">✓</div>
+                    <h4>Kuis per Madah</h4>
+                    <p>Latihan dan kuis untuk membantu mengukur pemahaman terhadap materi yang dipelajari.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: BENEFIT SANTRI -->
+            <div class="discover-panel" id="discover-panel-benefit" role="tabpanel" aria-labelledby="discover-tab-benefit" data-discover-panel="benefit" hidden>
+              <div class="discover-panel-layout">
+                <div class="discover-copy">
+                  <span class="eyebrow">Manfaat dalam Satu Perjalanan</span>
+                  <h3>Lebih dari materi: ada arah, pendampingan, dan perkembangan.</h3>
+                  <p>Markaz menggabungkan pembelajaran, materi pendukung, evaluasi, dan portal terpadu untuk menemani perjalanan akademik santri.</p>
+                  <div class="discover-note">
+                    <span class="discover-note-mark">★</span>
+                    <span>Fokus kami adalah membantu santri tumbuh dalam ilmu, adab, dan istiqomah—dengan proses yang terarah.</span>
+                  </div>
+                </div>
+                <div class="discover-feature-grid">
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">⌖</div>
+                    <h4>Paket Fleksibel</h4>
+                    <p>Pilihan paket intensif atau reguler sesuai kebutuhan belajar santri.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">▤</div>
+                    <h4>Materi Terarah</h4>
+                    <p>Video, modul, dan kuis mengikuti program serta madah pilihan.</p>
+                  </article>
+                  <article class="discover-feature">
+                    <div class="discover-feature-icon">♧</div>
+                    <h4>KTA Digital &amp; Streak</h4>
+                    <p>Fasilitas portal untuk mendukung identitas dan konsistensi belajar santri.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="discover-bottom-link">
+              <a class="btn btn-orange" href="#program">Jelajahi Program Pembelajaran →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE AT-TA'ALLUM -->
+      <section class="section story-section" id="keunggulan" aria-labelledby="whyTitle">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">The At-Ta'allum Difference</span>
+              <h2 id="whyTitle">Belajar dengan pendampingan, arah, dan pengalaman yang bermakna.</h2>
+              <p>Markaz memadukan suasana belajar yang hangat dengan pendampingan akademik dan dukungan pembelajaran digital.</p>
+            </div>
+          </div>
+          <div class="story-feature-grid">
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">✦</div>
+              <h3>Pendampingan Pengajar</h3>
+              <p>Santri mendapat arahan untuk memahami materi sesuai madah dan kebutuhan belajarnya.</p>
+            </article>
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">◎</div>
+              <h3>Belajar Interaktif</h3>
+              <p>Suasana belajar yang komunikatif, memberi ruang untuk bertanya, berdiskusi, dan berlatih.</p>
+            </article>
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">▤</div>
+              <h3>Materi Pendukung</h3>
+              <p>Video pembelajaran, modul, dan kuis menjadi pendamping proses belajar sesuai program.</p>
+            </article>
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">✓</div>
+              <h3>Evaluasi Belajar</h3>
+              <p>Evaluasi dan mutaba'ah membantu santri melihat hal yang sudah dikuasai dan perlu diperkuat.</p>
+            </article>
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">⌂</div>
+              <h3>Lingkungan Nyaman</h3>
+              <p>Ruang belajar di Hayy Sabik dirancang untuk mendukung konsentrasi dan kenyamanan belajar.</p>
+            </article>
+            <article class="story-feature-card">
+              <div class="story-feature-icon" aria-hidden="true">⌘</div>
+              <h3>Portal Terpadu</h3>
+              <p>Portal Markaz menghubungkan kebutuhan belajar dan informasi akademik dalam satu tempat.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSIDE OUR LEARNING SYSTEM: OVERVIEW, INTERACTIVE DEMO, AND VIDEO SLOT -->
+      <section class="section lms-preview-section" id="lms-preview" aria-labelledby="lmsPreviewTitle">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Inside Our Learning System</span>
+              <h2 id="lmsPreviewTitle">Kenali pengalaman belajar digital At-Ta'allum.</h2>
+              <p>Lihat gambaran portal, coba demo sederhana, dan tonton demonstrasi LMS. Bagian ini merupakan preview publik, bukan akses ke data akun santri.</p>
+            </div>
+            <a class="btn btn-secondary btn-sm" href="login.html">Masuk Portal →</a>
+          </div>
+
+          <div class="lms-preview-card">
+            <div class="lms-preview-tabs" role="tablist" aria-label="Jenis preview LMS">
+              <button class="lms-preview-tab is-active" id="lms-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="lms-panel-overview" data-lms-tab="overview">Tampilan Portal</button>
+              <button class="lms-preview-tab" id="lms-tab-demo" type="button" role="tab" aria-selected="false" aria-controls="lms-panel-demo" data-lms-tab="demo">Coba Demo</button>
+              <button class="lms-preview-tab" id="lms-tab-video" type="button" role="tab" aria-selected="false" aria-controls="lms-panel-video" data-lms-tab="video">Video Demo</button>
+            </div>
+
+            <div class="lms-preview-panel is-active" id="lms-panel-overview" role="tabpanel" aria-labelledby="lms-tab-overview" data-lms-panel="overview">
+              <div class="portal-preview-shell">
+                <div class="portal-preview-topbar">
+                  <div class="portal-preview-brand"><span class="portal-brand-dot"></span><span>At-Ta'allum <small>Student Portal Preview</small></span></div>
+                  <span class="portal-preview-label">Ilustrasi tampilan</span>
+                </div>
+                <div class="portal-preview-body">
+                  <aside class="portal-preview-sidebar" aria-label="Contoh navigasi portal">
+                    <span class="portal-side-active">▦ <span>Beranda</span></span>
+                    <span>▤ <span>Materi</span></span>
+                    <span>▷ <span>Video</span></span>
+                    <span>✓ <span>Kuis &amp; Evaluasi</span></span>
+                    <span>◷ <span>Mutaba'ah</span></span>
+                  </aside>
+                  <div class="portal-preview-main">
+                    <div class="portal-preview-welcome">
+                      <div><small>STUDENT LEARNING SPACE</small><h3>Selamat datang di perjalanan ilmumu.</h3><p>Materi dan aktivitas belajar tersusun sesuai program yang diikuti.</p></div>
+                      <span class="portal-avatar" aria-hidden="true">ط</span>
+                    </div>
+                    <div class="portal-preview-cards">
+                      <div class="portal-mini-card"><span class="portal-mini-icon">▤</span><small>Materi</small><strong>Modul Pembelajaran</strong><span>Materi sesuai madah</span></div>
+                      <div class="portal-mini-card"><span class="portal-mini-icon">▷</span><small>Video</small><strong>Video Pembelajaran</strong><span>Ulangi materi pilihan</span></div>
+                      <div class="portal-mini-card"><span class="portal-mini-icon">✓</span><small>Evaluasi</small><strong>Kuis &amp; Latihan</strong><span>Perkuat pemahaman</span></div>
+                    </div>
+                    <div class="portal-preview-lower"><div><strong>Area Pembelajaran</strong><span>Contoh susunan materi dan aktivitas santri.</span></div><div class="portal-progress-lines"><i></i><i></i><i></i></div></div>
+                  </div>
+                </div>
+              </div>
+              <p class="lms-preview-caption">Mockup ilustratif untuk memperlihatkan konsep antarmuka. Tampilan final mengikuti sistem LMS yang aktif.</p>
+            </div>
+
+            <div class="lms-preview-panel" id="lms-panel-demo" role="tabpanel" aria-labelledby="lms-tab-demo" data-lms-panel="demo" hidden>
+              <div class="mini-demo-layout">
+                <div class="mini-demo-intro">
+                  <span class="eyebrow">Try a Learning Preview</span>
+                  <h3>Coba beberapa bagian pengalaman belajar.</h3>
+                  <p>Pilih salah satu menu di bawah. Konten ini adalah simulasi interaktif sederhana untuk memperkenalkan jenis aktivitas yang tersedia.</p>
+                  <div class="mini-demo-menu" role="group" aria-label="Pilih demo pembelajaran">
+                    <button type="button" class="mini-demo-button is-active" data-mini-demo="materi">Modul</button>
+                    <button type="button" class="mini-demo-button" data-mini-demo="video">Video</button>
+                    <button type="button" class="mini-demo-button" data-mini-demo="kuis">Kuis</button>
+                  </div>
+                </div>
+                <div class="mini-demo-stage" aria-live="polite">
+                  <div class="mini-demo-stage-top"><span>AT-TA'ALLUM LEARNING PREVIEW</span><span class="mini-demo-status">DEMO</span></div>
+                  <div id="miniDemoContent" class="mini-demo-content">
+                    <span class="mini-demo-kicker">MODUL PEMBELAJARAN</span>
+                    <h4>Pengantar materi Nahwu</h4>
+                    <p>Modul membantu santri membaca kembali pokok bahasan dan catatan penting setelah pembelajaran.</p>
+                    <div class="mini-demo-module"><span>01</span><div><strong>Pokok pembahasan</strong><small>Ringkasan materi dan istilah penting</small></div><b>✓</b></div>
+                    <div class="mini-demo-module"><span>02</span><div><strong>Contoh dan latihan</strong><small>Contoh penerapan materi</small></div><b>→</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lms-preview-panel" id="lms-panel-video" role="tabpanel" aria-labelledby="lms-tab-video" data-lms-panel="video" hidden>
+              <div class="lms-video-demo-wrap">
+                <div class="lms-video-placeholder" id="lmsVideoPlaceholder">
+                  <span class="lms-video-play" aria-hidden="true">▶</span>
+                  <strong>Video demonstrasi LMS</strong>
+                  <p>Tambahkan file <code>lms-demo.mp4</code> di folder yang sama dengan index.html untuk menampilkan video pengenalan portal.</p>
+                  <button class="btn btn-orange" id="loadLmsDemoVideo" type="button">Coba Putar Video</button>
+                  <small id="lmsVideoStatus" role="status">Slot video siap diisi. Video utama Markaz tetap menggunakan Markas.mp4.</small>
+                </div>
+                <video id="lmsDemoVideo" class="lms-demo-video" controls playsinline preload="none" hidden>
+                  <source src="lms-demo.mp4" type="video/mp4">
+                  Browser Anda tidak mendukung pemutaran video.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIGA TAHAP PERKEMBANGAN MURID -->
+      <section class="section" id="tahapan">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Filosofi &amp; Metode Kami</span>
+              <h2>Tiga Tahap Penting Perjalanan Murid</h2>
+              <p>Setiap pelajar memiliki ritme belajarnya sendiri. Kami mendampingi mereka secara bertahap dan personal.</p>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="spark"></div>
+              <h3>1. Tahap Mau</h3>
+              <p>Saat seorang murid mulai menunjukkan keinginan untuk belajar, meskipun masih sederhana dan membutuhkan dorongan hangat dari pengajar.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="book"></div>
+              <h3>2. Tahap Sadar</h3>
+              <p>Ketika murid mulai memahami pentingnya ilmu—bahwa belajar bukan sekadar menggugurkan kewajiban, melainkan kebutuhan hidup.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="flame"></div>
+              <h3>3. Tahap Tekad</h3>
+              <p>Puncak kesadaran ketika murid belajar dengan kemauan kuat, disiplin, dan keyakinan bahwa setiap ikhtiar mendekatkannya pada cita-cita.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- KATALOG PROGRAM DINAMIS & PAKET BELAJAR -->
+      <section class="section" id="program">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Marhaban Bikum!</span>
+              <h2>Program Pembelajaran Markaz At-Ta'allum</h2>
+              <p>Status pendaftaran program di bawah ini diperbarui langsung oleh Pengelola Eksekutif Markaz. Buat akun santri terlebih dahulu, lalu pilih paket dan madah di dalam dashboard.</p>
+            </div>
+            <a class="btn btn-secondary btn-sm" href="register.html">Buat Akun Santri →</a>
+          </div>
+
+          <div class="feature-grid" id="public-programs" aria-live="polite"></div>
+
+          <div class="feature-grid" style="margin-top: 22px;">
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="flame"></div>
+              <span class="badge active">Intensif Penuh</span>
+              <h3>Paket Mutqin (Ahad – Kamis)</h3>
+              <p>Mengambil seluruh madah aktif pada program pilihan. Jadwal belajar intensif setiap hari aktif Kairo (Ahad s.d. Kamis, Jumat &amp; Sabtu libur resmi).</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="check"></div>
+              <span class="badge blue">Fleksibel Terfokus</span>
+              <h3>Paket Mubsyit / Reguler</h3>
+              <p>Bebas memilih madah spesifik yang ingin diperkuat (seperti Nahwu, Shorof, Balaghah, Mantiq, atau Mawaris). Materi video, modul, dan jadwal otomatis menyesuaikan madah pilihan.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" data-icon="shield"></div>
+              <span class="badge pending">Fasilitas Lengkap</span>
+              <h3>Ruang Nyaman &amp; Portal Terpadu</h3>
+              <p>Ruang belajar ber-AC (musim panas) &amp; pemanas (musim dingin) di Hayy Sabik, modul eksklusif, evaluasi mutaba'ah ustadz, serta Kartu Tanda At-Ta'allum (KTA).</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PETA PERJALANAN PELAJAR MA'HAD -->
+      <section class="section" id="peta-perjalanan">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Alur Akademik Kairo</span>
+              <h2>Peta Perjalanan Pelajar Ma'had</h2>
+              <p>Empat langkah terarah mendampingi pelajar dari penguatan bahasa hingga menembus bangku perkuliahan Universitas Al-Azhar.</p>
+            </div>
+          </div>
+          <div class="roadmap-grid">
+            <article class="roadmap-card">
+              <span class="roadmap-num">LANGKAH 01</span>
+              <h3>Dirosah Khossoh</h3>
+              <p>Fokus pada peningkatan fondasi dan kemahiran Bahasa Arab sebelum memasuki jenjang formal.</p>
+            </article>
+            <article class="roadmap-card">
+              <span class="roadmap-num">LANGKAH 02</span>
+              <h3>Imtihan Qobul</h3>
+              <p>Bimbingan terfokus menghadapi ujian penentuan penempatan kelas di tingkat I'dadi atau Tsanawi.</p>
+            </article>
+            <article class="roadmap-card">
+              <span class="roadmap-num">LANGKAH 03</span>
+              <h3>Tingkat I'dadi / Tsanawi</h3>
+              <p>Pendampingan materi pelajaran sekolah di Ma'had Al-Azhar (setara jenjang SMP dan SMA).</p>
+            </article>
+            <article class="roadmap-card">
+              <span class="roadmap-num">LANGKAH 04</span>
+              <h3>Musabaqoh &amp; Al-Azhar</h3>
+              <p>Ujian akselerasi lompat kelas (dari 2 I'dadi ke 1 Tsanawi) dan Mu'adalah menuju Universitas Al-Azhar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEET OUR EDUCATORS: REAL PROFILES TO BE ADDED -->
+      <section class="section people-section" id="pengajar" aria-labelledby="educatorsTitle">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Meet Our Educators</span>
+              <h2 id="educatorsTitle">Belajar dengan arahan dan pendampingan pengajar.</h2>
+              <p>Kenali para pengajar yang menemani proses belajar di Markaz. Profil, bidang keahlian, dan dokumentasi akan ditampilkan berdasarkan data resmi yang disiapkan pengelola.</p>
+            </div>
+          </div>
+          <div class="people-grid">
+            <article class="person-card">
+              <div class="person-photo-placeholder"><span>Foto Pengajar</span></div>
+              <div class="person-card-copy"><span class="person-label">PROFIL PENGAJAR</span><h3>Nama Pengajar</h3><p>Bidang keahlian dan madah yang diampu.</p><span class="person-placeholder-note">Tempat untuk foto dan biodata asli.</span></div>
+            </article>
+            <article class="person-card">
+              <div class="person-photo-placeholder person-photo-warm"><span>Foto Pengajar</span></div>
+              <div class="person-card-copy"><span class="person-label">PROFIL PENGAJAR</span><h3>Nama Pengajar</h3><p>Bidang keahlian dan madah yang diampu.</p><span class="person-placeholder-note">Tempat untuk foto dan biodata asli.</span></div>
+            </article>
+            <article class="person-card">
+              <div class="person-photo-placeholder person-photo-soft"><span>Foto Pengajar</span></div>
+              <div class="person-card-copy"><span class="person-label">PROFIL PENGAJAR</span><h3>Nama Pengajar</h3><p>Bidang keahlian dan madah yang diampu.</p><span class="person-placeholder-note">Tempat untuk foto dan biodata asli.</span></div>
+            </article>
+          </div>
+          <p class="section-footnote">Profil contoh ini merupakan slot konten, bukan identitas pengajar yang sudah dipublikasikan.</p>
+        </div>
+      </section>
+
+      <!-- STUDENT ACHIEVEMENTS: REAL DOCUMENTATION TO BE ADDED -->
+      <section class="section achievement-section" id="pencapaian" aria-labelledby="achievementTitle">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Student Stories</span>
+              <h2 id="achievementTitle">Setiap perjalanan belajar punya cerita.</h2>
+              <p>Dokumentasikan proses, pengalaman, dan pencapaian santri agar calon santri serta orang tua dapat melihat perjalanan belajar secara nyata.</p>
+            </div>
+          </div>
+          <div class="achievement-grid">
+            <article class="achievement-card">
+              <div class="achievement-visual"><span>Dokumentasi Santri</span></div>
+              <div class="achievement-copy"><span class="person-label">STUDENT JOURNEY</span><h3>Perjalanan Imtihan Qobul</h3><p>Tambahkan cerita proses persiapan, pendampingan, dan pengalaman santri.</p></div>
+            </article>
+            <article class="achievement-card">
+              <div class="achievement-visual achievement-visual-warm"><span>Foto Pencapaian</span></div>
+              <div class="achievement-copy"><span class="person-label">ACADEMIC MILESTONE</span><h3>Pencapaian Akademik</h3><p>Tampilkan hasil dan dokumentasi yang telah dikonfirmasi oleh pengelola.</p></div>
+            </article>
+            <article class="achievement-card">
+              <div class="achievement-visual achievement-visual-soft"><span>Foto Kegiatan</span></div>
+              <div class="achievement-copy"><span class="person-label">MARKAZ MOMENTS</span><h3>Aktivitas dan Kebersamaan</h3><p>Perlihatkan suasana kelas, kegiatan akademik, dan momen kebersamaan.</p></div>
+            </article>
+          </div>
+          <p class="section-footnote">Bagian ini sengaja disiapkan sebagai slot dokumentasi. Tidak ada angka atau klaim pencapaian yang dibuat-buat.</p>
+        </div>
+      </section>
+
+
+      <!-- TESTIMONI PELAJAR -->
+      <section class="section" id="testimoni">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Suara Keluarga Markaz</span>
+              <h2 id="cerita">Cerita dan Testimoni Keluarga Markaz</h2>
+              <p>Dengarkan pengalaman belajar dari santri yang telah menjadi bagian dari perjalanan Markaz At-Ta'allum.</p>
+            </div>
+          </div>
+          <div class="testi-grid">
+            <article class="testi-card">
+              <p>"Alhamdulillah, belajar di Markaz At-Ta'allum benar-benar membantu saya memahami pelajaran I'dadi dan Tsanawi Ma'had Al-Azhar dengan cara yang mudah dan menyenangkan. Para gurunya luar biasa sabar dan asik!"</p>
+              <strong>Harisul Iman</strong>
+              <small>Peserta Qobul &amp; Mu'adalah · Berhasil Menuju Kuliah</small>
+            </article>
+            <article class="testi-card">
+              <p>"Belajar di At-Ta'allum rasanya seperti punya keluarga kedua. Suasananya hangat, ustadz-ustadzahnya saling support. Di I'dadi sampai Tsanawi saya bukan cuma dapat ilmu, tapi juga adab dan kedisiplinan."</p>
+              <strong>Hafiz Habibullah</strong>
+              <small>Peserta Qobul &amp; Mu'adalah · Berhasil Menuju Kuliah</small>
+            </article>
+            <article class="testi-card">
+              <p>"Dari nol banget sampai Alhamdulillah hasil Imtihan Qobul saya dapat 2 Tsanawi! Satu angkatan kami rata-rata tembus Tsanawi berkat kesabaran guru-guru At-Ta'allum."</p>
+              <strong>Najwa Al-Khan Denisya &amp; Adinda Dania</strong>
+              <small>Peserta Qobul · Berhasil Meraih 2 Tsanawi</small>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMISSION PROCESS -->
+      <section class="section admission-section" id="pendaftaran" aria-labelledby="admissionTitle">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Your Journey Starts Here</span>
+              <h2 id="admissionTitle">Memulai perjalanan belajar di At-Ta'allum.</h2>
+              <p>Kenali gambaran umum proses bergabung. Detail program dan ketentuan administrasi mengikuti informasi resmi dari pengelola.</p>
+            </div>
+            <a class="btn btn-orange btn-sm" href="register.html">Mulai Pendaftaran →</a>
+          </div>
+          <div class="admission-grid">
+            <article class="admission-step"><span class="admission-number">01</span><div class="admission-step-icon">＋</div><h3>Buat Akun</h3><p>Daftarkan akun calon santri melalui portal Markaz.</p></article>
+            <article class="admission-step"><span class="admission-number">02</span><div class="admission-step-icon">▤</div><h3>Pilih Program</h3><p>Kenali paket dan pilih madah sesuai kebutuhan belajar.</p></article>
+            <article class="admission-step"><span class="admission-number">03</span><div class="admission-step-icon">✓</div><h3>Lengkapi Informasi</h3><p>Ikuti arahan pengelola terkait data dan administrasi pendaftaran.</p></article>
+            <article class="admission-step"><span class="admission-number">04</span><div class="admission-step-icon">→</div><h3>Mulai Belajar</h3><p>Setelah proses pendaftaran dikonfirmasi, ikuti informasi kelas dan akses belajar.</p></article>
+          </div>
+          <div class="admission-help"><span>Masih ingin bertanya sebelum mendaftar?</span><a href="https://wa.me/201551018457" target="_blank" rel="noopener noreferrer">Konsultasi dengan Markaz →</a></div>
+        </div>
+      </section>
+
+      <!-- FAQ INTERACTIVE ACCORDION -->
+      <section class="section faq-section" id="faq" aria-labelledby="faqTitle">
+        <div class="container faq-layout">
+          <div class="faq-intro">
+            <span class="eyebrow">Need to Know</span>
+            <h2 id="faqTitle">Ada yang ingin ditanyakan?</h2>
+            <p>Berikut beberapa informasi awal untuk calon santri dan orang tua. Untuk detail terbaru, silakan konsultasikan langsung dengan pengelola.</p>
+            <a class="btn btn-secondary" href="https://wa.me/201551018457" target="_blank" rel="noopener noreferrer">Tanya melalui WhatsApp</a>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Program apa saja yang tersedia?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Informasi program aktif ditampilkan pada bagian Program Pembelajaran. Pilihan paket yang diperkenalkan meliputi paket intensif Mutqin dan paket Mubsyit/Reguler, dengan pilihan madah sesuai program yang tersedia.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Apakah santri dapat memilih madah tertentu?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Pada paket reguler, santri dapat memilih madah spesifik yang ingin diperkuat sesuai pilihan yang tersedia, seperti Nahwu, Shorof, Balaghah, Mantiq, atau Mawaris.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Apakah tersedia video dan modul pembelajaran?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Markaz menyediakan materi pendukung seperti video pembelajaran, modul, dan kuis sesuai program serta madah yang diikuti. Detail akses mengikuti ketentuan program.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Bagaimana cara mendaftar?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Calon santri dapat membuat akun melalui halaman pendaftaran, kemudian mengikuti arahan untuk memilih program dan melengkapi informasi yang dibutuhkan.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Di mana lokasi Markaz At-Ta'allum?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Markaz At-Ta'allum berlokasi di Hayy Sabik, Kairo, Mesir.</p></div>
+            </article>
+            <article class="faq-item">
+              <h3><button class="faq-question" type="button" aria-expanded="false"><span>Bagaimana cara mengetahui biaya dan informasi pembayaran?</span><span class="faq-toggle" aria-hidden="true">+</span></button></h3>
+              <div class="faq-answer" hidden><p>Informasi biaya dan ketentuan pembayaran dapat dikonfirmasi kepada pengelola melalui WhatsApp agar calon santri memperoleh informasi yang sesuai dengan program yang dipilih.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENGUMUMAN DINAMIS -->
+      <section class="section updates-section" id="pengumuman">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Kabar Markaz</span>
+              <h2>Pengumuman &amp; Agenda Terbaru</h2>
+              <p>Kabar, agenda, dan informasi resmi Markaz yang diperbarui melalui portal pengelola.</p>
+            </div>
+            <a class="btn btn-secondary btn-sm" href="login.html">Buka Portal →</a>
+          </div>
+          <div class="announcement-grid" id="public-announcements" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <div class="container">
+        <section class="cta-strip">
+          <div>
+            <h2>Siap tumbuh dengan ilmu, adab, dan istiqomah?</h2>
+            <p>Hayy Sabik, Kairo · WhatsApp: +20 155 101 8457 · IG: @attaallumarkaz · Email: attaallumy@gmail.com</p>
+          </div>
+          <div class="card-actions">
+            <a class="btn" href="register.html">Daftar Sekarang</a>
+            <a class="btn" href="https://wa.me/201551018457" target="_blank" rel="noopener noreferrer">Konsultasi WA</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Markaz At-Ta'allum · Hayy Sabik, Kairo, Mesir</span>
+        <span>Ilmu · Adab · Istiqomah · Menerangi Ilmu dengan Hati</span>
+      </div>
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/201551018457" target="_blank" rel="noopener noreferrer" aria-label="Konsultasi Markaz melalui WhatsApp" title="Konsultasi WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.4-4.9A8.4 8.4 0 1 1 20.5 11.7Z"/><path d="M8.4 8.2c.2-.5.5-.6.8-.6h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.4-.5.4-1.2.6-2 .4-1-.2-2.2-.8-3.4-1.9-1.3-1.1-2.1-2.4-2.4-3.3-.3-.9-.1-1.7.3-2.1Z"/></svg>
+    </a>
+
+    <div class="gallery-lightbox" id="galleryLightbox" hidden role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+      <button class="gallery-lightbox-close" id="galleryLightboxClose" type="button" aria-label="Tutup pratinjau">×</button>
+      <img id="galleryLightboxImage" src="" alt="Pratinjau foto Markaz">
+      <p id="galleryLightboxCaption"></p>
+    </div>
+  </div>
+  <script>
+    // Video autoplay dimulai tanpa suara mengikuti kebijakan browser.
+    // Ikon speaker menjadi kontrol mute/unmute tanpa label teks.
+    (() => {
+      const video = document.getElementById('landingHeroVideo');
+      const soundButton = document.getElementById('landingVideoSound');
+      const mutedIcon = document.getElementById('landingSoundMutedIcon');
+      const soundOnIcon = document.getElementById('landingSoundOnIcon');
+      if (!video || !soundButton || !mutedIcon || !soundOnIcon) return;
+
+      video.muted = true;
+      video.volume = 0.78;
+
+      const updateSoundButton = () => {
+        const soundOn = !video.muted;
+        soundButton.setAttribute('aria-pressed', String(soundOn));
+        const label = soundOn ? 'Matikan suara' : 'Nyalakan suara';
+        soundButton.setAttribute('aria-label', label);
+        soundButton.setAttribute('title', label);
+        mutedIcon.hidden = soundOn;
+        soundOnIcon.hidden = !soundOn;
+      };
+
+      soundButton.addEventListener('click', async () => {
+        if (video.muted) {
+          video.muted = false;
+          video.volume = 0.78;
+          try {
+            await video.play();
+          } catch (error) {
+            video.muted = true;
+          }
+        } else {
+          video.muted = true;
+        }
+        updateSoundButton();
+      });
+
+      video.addEventListener('volumechange', updateSoundButton);
+      updateSoundButton();
+
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(() => {
+          // Beberapa browser menunda autoplay sampai ada interaksi pengguna.
+        });
+      }
+    })();
+  </script>
+  <script>
+    // Tab interaktif untuk menjelajahi fasilitas dan pengalaman di Markaz.
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('[data-discover-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-discover-panel]'));
+      if (!tabs.length || !panels.length) return;
+
+      const activateTab = (selectedTab, moveFocus = false) => {
+        const selectedName = selectedTab.dataset.discoverTab;
+        tabs.forEach((tab) => {
+          const isActive = tab === selectedTab;
+          tab.setAttribute('aria-selected', String(isActive));
+          tab.tabIndex = isActive ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          const isActive = panel.dataset.discoverPanel === selectedName;
+          panel.hidden = !isActive;
+          panel.classList.toggle('is-active', isActive);
+        });
+        if (moveFocus) selectedTab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          let nextIndex = index;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // LMS preview tabs: overview, interactive demo, and optional video demonstration.
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('[data-lms-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-lms-panel]'));
+      if (tabs.length && panels.length) {
+        const activate = (tab, focus = false) => {
+          const key = tab.dataset.lmsTab;
+          tabs.forEach((item) => {
+            const active = item === tab;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-selected', String(active));
+            item.tabIndex = active ? 0 : -1;
+          });
+          panels.forEach((panel) => {
+            const active = panel.dataset.lmsPanel === key;
+            panel.hidden = !active;
+            panel.classList.toggle('is-active', active);
+          });
+          if (focus) tab.focus();
+        };
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('click', () => activate(tab));
+          tab.addEventListener('keydown', (event) => {
+            let next = index;
+            if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+            else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+            else if (event.key === 'Home') next = 0;
+            else if (event.key === 'End') next = tabs.length - 1;
+            else return;
+            event.preventDefault();
+            activate(tabs[next], true);
+          });
+        });
+      }
+
+      const demoContent = document.getElementById('miniDemoContent');
+      const demoButtons = Array.from(document.querySelectorAll('[data-mini-demo]'));
+      const demoViews = {
+        materi: `<span class="mini-demo-kicker">MODUL PEMBELAJARAN</span><h4>Pengantar materi Nahwu</h4><p>Modul membantu santri membaca kembali pokok bahasan dan catatan penting setelah pembelajaran.</p><div class="mini-demo-module"><span>01</span><div><strong>Pokok pembahasan</strong><small>Ringkasan materi dan istilah penting</small></div><b>✓</b></div><div class="mini-demo-module"><span>02</span><div><strong>Contoh dan latihan</strong><small>Contoh penerapan materi</small></div><b>→</b></div>`,
+        video: `<span class="mini-demo-kicker">VIDEO PEMBELAJARAN</span><h4>Ulangi materi sesuai kebutuhan.</h4><p>Video pembelajaran dapat menjadi pendamping untuk mengingat kembali penjelasan dan pokok bahasan.</p><div class="mini-demo-module"><span>▶</span><div><strong>Cuplikan materi</strong><small>Contoh area video dalam portal santri</small></div><b>→</b></div>`,
+        kuis: `<span class="mini-demo-kicker">INTERACTIVE QUIZ</span><h4>Contoh pertanyaan singkat</h4><p>Dalam proses belajar, kuis dapat membantu menguatkan pemahaman materi.</p><div class="mini-demo-quiz-options"><button type="button" data-quiz-answer="wrong">Menghafal tanpa memahami</button><button type="button" data-quiz-answer="correct">Memahami kaidah dan penerapannya</button></div><div class="mini-demo-feedback" id="miniDemoFeedback" aria-live="polite"></div>`
+      };
+      const activateDemo = (button) => {
+        if (!demoContent) return;
+        demoButtons.forEach((item) => item.classList.toggle('is-active', item === button));
+        demoContent.innerHTML = demoViews[button.dataset.miniDemo] || demoViews.materi;
+      };
+      demoButtons.forEach((button) => button.addEventListener('click', () => activateDemo(button)));
+      if (demoContent) {
+        demoContent.addEventListener('click', (event) => {
+          const answer = event.target.closest('[data-quiz-answer]');
+          if (!answer) return;
+          const feedback = demoContent.querySelector('#miniDemoFeedback');
+          if (answer.dataset.quizAnswer === 'correct') {
+            feedback.textContent = 'Tepat! Pemahaman dan penerapan kaidah menjadi bagian penting dalam belajar.';
+            answer.classList.add('is-correct');
+          } else {
+            feedback.textContent = 'Coba lagi. Pilih jawaban yang menekankan pemahaman.';
+          }
+        });
+      }
+
+      const loadButton = document.getElementById('loadLmsDemoVideo');
+      const demoVideo = document.getElementById('lmsDemoVideo');
+      const videoPlaceholder = document.getElementById('lmsVideoPlaceholder');
+      const videoStatus = document.getElementById('lmsVideoStatus');
+      if (loadButton && demoVideo && videoPlaceholder) {
+        loadButton.addEventListener('click', async () => {
+          videoPlaceholder.hidden = true;
+          demoVideo.hidden = false;
+          if (!demoVideo.dataset.loadAttempted) {
+            demoVideo.dataset.loadAttempted = 'true';
+            demoVideo.load();
+          }
+          try {
+            await demoVideo.play();
+          } catch (error) {
+            videoPlaceholder.hidden = false;
+            demoVideo.hidden = true;
+            if (videoStatus) videoStatus.textContent = 'Video belum tersedia atau belum dapat diputar. Letakkan file lms-demo.mp4 di folder yang sama dengan index.html.';
+          }
+        });
+        demoVideo.addEventListener('error', () => {
+          demoVideo.hidden = true;
+          videoPlaceholder.hidden = false;
+          if (videoStatus) videoStatus.textContent = 'File lms-demo.mp4 belum ditemukan. Tambahkan file tersebut untuk mengaktifkan video demonstrasi.';
+        });
+      }
+    })();
+  </script>
+  <script>
+    // Accessible FAQ accordion; only one answer remains open at a time.
+    (() => {
+      const questions = Array.from(document.querySelectorAll('.faq-question'));
+      questions.forEach((button) => {
+        button.addEventListener('click', () => {
+          const wasOpen = button.getAttribute('aria-expanded') === 'true';
+          questions.forEach((other) => {
+            other.setAttribute('aria-expanded', 'false');
+            const answer = other.closest('.faq-item')?.querySelector('.faq-answer');
+            if (answer) answer.hidden = true;
+          });
+          button.setAttribute('aria-expanded', String(!wasOpen));
+          const answer = button.closest('.faq-item')?.querySelector('.faq-answer');
+          if (answer) answer.hidden = wasOpen;
+        });
+      });
+    })();
+  </script>
+  <script>
+    // Optional photo lightbox: add data-lightbox to any real gallery image when assets are supplied.
+    (() => {
+      const lightbox = document.getElementById('galleryLightbox');
+      const image = document.getElementById('galleryLightboxImage');
+      const caption = document.getElementById('galleryLightboxCaption');
+      const close = document.getElementById('galleryLightboxClose');
+      if (!lightbox || !image || !close) return;
+      const closeLightbox = () => { lightbox.hidden = true; image.src = ''; };
+      document.addEventListener('click', (event) => {
+        const target = event.target.closest('img[data-lightbox]');
+        if (!target) return;
+        image.src = target.currentSrc || target.src;
+        image.alt = target.alt || 'Foto Markaz';
+        if (caption) caption.textContent = target.dataset.caption || target.alt || '';
+        lightbox.hidden = false;
+        close.focus();
+      });
+      close.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
+    })();
+  </script>
+  <script>
+    // Gentle reveal-on-scroll; disabled automatically for reduced-motion preferences.
+    (() => {
+      const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('.story-feature-card, .lms-preview-card, .person-card, .achievement-card, .admission-step, .faq-item');
+      if (reduced || !('IntersectionObserver' in window)) return;
+      targets.forEach((element) => element.classList.add('reveal-ready'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      targets.forEach((element) => observer.observe(element));
+    })();
+  </script>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

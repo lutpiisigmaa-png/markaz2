@@ -1,0 +1,9 @@
+{
+  "name": "markaz-lms-v6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/config.test.js tests/app.test.js tests/sheets.test.js",
+    "check": "node --check config.js && node --check app.js && node --check motion.js && node --check student-sheets.js && node --check sheets-config.js"
+  }
+}
